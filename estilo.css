@@ -20,7 +20,10 @@ body {
             background: #4CAF50;
             color: white;
             padding: 10px 0;
-            text-align: center;}
+            text-align: center;
+
+
+        }
         .container {
             width: 90%;
             margin: auto;
