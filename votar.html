@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votar Online</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+<link rel="stylesheet" href="../css/votar.css">
+</head>
+<body>
+    <header>
+        <h1>Votación Online</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="cultura.html">Cultura</a></li>
+                <li><a href="votar.html">Votar Online</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Participa en la Democracia del Reino</h2>
+       <form id="form-voto"method="POST">
+    <label for="nombre">Nombre Completo:</label><br>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+    
+    <label for="apellido">Apellido:</label><br>
+    <input type="text" id="apellido" name="apellido" required><br><br>
+    
+    <label for="distrito">Distrito:</label><br>
+    <select id="distrito" name="distrito" required>
+        <option value="" disabled selected>Selecciona tu distrito</option>
+        <option value="distrito1">Distrito 1</option>
+        <option value="distrito2">Distrito 2</option>
+        <option value="distrito3">Distrito 3</option>
+        <option value="distrito4">Distrito 4</option>
+        <option value="distrito5">Distrito 5</option>
+        <option value="distrito6">Distrito 6</option>
+        <option value="distrito7">Distrito 7</option>
+        <option value="distrito8">Distrito 8</option>
+        <option value="huelva">Huelva</option>
+<option value="albacete">Albacete</option>
+<option value="alicante">Alicante</option>
+<option value="almeria">Almería</option>
+<option value="asturias">Asturias</option>
+<option value="avila">Ávila</option>
+<option value="badajoz">Badajoz</option>
+<option value="barcelona">Barcelona</option>
+<option value="burgos">Burgos</option>
+<option value="caceres">Cáceres</option>
+<option value="cadiz">Cádiz</option>
+<option value="cantabria">Cantabria</option>
+<option value="castellon">Castellón</option>
+<option value="ceuta">Ceuta</option>
+<option value="cordoba">Córdoba</option>
+<option value="la_coruna">La Coruña</option>
+<option value="cuenca">Cuenca</option>
+<option value="girona">Girona</option>
+<option value="granada">Granada</option>
+<option value="guadalajara">Guadalajara</option>
+<option value="guipuzkoa">Guipúzcoa</option>
+<option value="huelva">Huelva</option>
+<option value="jaen">Jaén</option>
+<option value="la_rioja">La Rioja</option>
+<option value="leon">León</option>
+<option value="lugo">Lugo</option>
+<option value="madrid">Madrid</option>
+<option value="malaga">Málaga</option>
+<option value="melilla">Melilla</option>
+<option value="murcia">Murcia</option>
+<option value="navarra">Navarra</option>
+<option value="orense">Ourense</option>
+<option value="palencia">Palencia</option>
+<option value="pontevedra">Pontevedra</option>
+<option value="salamanca">Salamanca</option>
+<option value="segovia">Segovia</option>
+<option value="sevilla">Sevilla</option>
+<option value="soria">Soria</option>
+<option value="tarragona">Tarragona</option>
+<option value="tenerife">Tenerife</option>
+<option value="toledo">Toledo</option>
+<option value="valencia">Valencia</option>
+<option value="valladolid">Valladolid</option>
+<option value="vizcaya">Vizcaya</option>
+<option value="zaragoza">Zaragoza</option>
+
+    </select><br><br>
+    
+    <label for="candidato">Candidato:</label><br>
+    <select id="candidato" name="candidato" required>
+        <option value="" disabled selected>Selecciona tu candidato</option>
+    </select><br><br>
+
+<!-- <label for="fecha_hora">Fecha y Hora:</label><br>
+    <input type="datetime-local" id="fecha_hora" name="fecha_hora" required><br><br> --> 
+    <input type="hidden" id="fecha_hora" name="fecha_hora" required><br><br>
+
+    <label for="codigo_seguro">Código Seguro:</label><br>
+    <input type="text" id="codigo_seguro" name="codigo_seguro" readonly><br><br>
+    <label for="sugerencias">Sugerencias:</label><br>
+
+    <textarea name="text" id="sugerencias" cols="32" rows="8"></textarea><br><br>
+
+    <button type="button" id="btn-resguardo">Descargar Resguardo</button>
+    <button type="submit">Enviar Voto</button>
+</form>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Reino de Geigh. Todos los derechos reservados.</p>
+    </footer>
+
+
+
+<script src="../js/votar.js"></script>
+</body>
+</html>
