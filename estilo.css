@@ -1,10 +1,10 @@
 header{
   text-align: center;
 }
-.buttons button{
+.button{
   padding: 15px 50px;
   background-color: purple;
 }
-.buttons button:hover{
+.button:hover{
   background-color: blue;
 }
