@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTE: Spain 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Menú lateral */
+        .menu {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .menu button:hover {
+            background-color: #555;
+        }
+
+        /* Contenedor principal */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            padding: 20px;
+            justify-content: space-around;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        .option-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .submit-btn {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú lateral -->
+    <div class="menu">
+        <button onclick="alert('Opción 1 del menú')">Opción 1</button>
+        <button onclick="alert('Opción 2 del menú')">Opción 2</button>
+        <button onclick="alert('Opción 3 del menú')">Opción 3</button>
+        <button onclick="alert('Opción 4 del menú')">Opción 4</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+
+        <!-- Encuesta VOTE -->
+        <div class="section">
+            <h1>VOTE: Spain 2024</h1>
+            <form id="voteForm">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required>
+
+                <label for="localidad">Localidad:</label>
+                <input type="text" id="localidad" name="localidad" required>
+
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+
+                <div class="options">
+                    <button type="button" class="option-btn" onclick="submitVote('Partido Socialista Obrero Español [PSOE]')">Partido Socialista Obrero Español [PSOE]</button>
+                    <button type="button" class="option-btn" onclick="submitVote('Partido Popular [PP]')">Partido Popular [PP]</button>
+                    <button type="button" class="option-btn" onclick="submitVote('Vox [VOX]')">Vox [VOX]</button>
+                    <button type="button" class="option-btn" onclick="submitVote('Sumar [SUMAR]')">Sumar [SUMAR]</button>
+                    <button type="button" class="option-btn" onclick="submitVote('Esquerra Republicana de Catalunya [ERC]')">Esquerra Republicana de Catalunya [ERC]</button>
+                    <button type="button" class="option-btn" onclick="submitVote('Junts per Catalunya [JxCat]')">Junts per Catalunya [JxCat]</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Formulario de Reclamaciones -->
+        <div class="section">
+            <h1>Reclamaciones sobre el voto</h1>
+            <form id="reclamaForm">
+                <label for="dniReclama">DNI:</label>
+                <input type="text" id="dniReclama" name="dniReclama" required>
+
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="reclamaTexto">Reclamación:</label>
+                <textarea id="reclamaTexto" name="reclamaTexto" rows="4" required></textarea>
+
+                <button type="button" class="submit-btn" onclick="submitReclama()">Enviar Reclamación</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        // Función para generar el archivo de voto
+        function submitVote(option) {
+            const dni = document.getElementById('dni').value;
+            const localidad = document.getElementById('localidad').value;
+            const provincia = document.getElementById('provincia').value;
+
+            if (!dni || !localidad || !provincia) {
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            const now = new Date();
+            const dateTime = now.toLocaleString();
+
+            const contenido = `
+            Registro de Voto
+            =========================
+            DNI: ${dni}
+            Localidad: ${localidad}
+            Provincia: ${provincia}
+            Fecha y Hora: ${dateTime}
+            Opción seleccionada: ${option}
+            `;
+
+            const blob = new Blob([contenido], { type: 'text/plain' });
+            const enlace = document.createElement('a');
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = 'vote.txt';
+            enlace.click();
+        }
+
+        // Función para generar el archivo de reclamación
+        function submitReclama() {
+            const dni = document.getElementById('dniReclama').value;
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const reclamaTexto = document.getElementById('reclamaTexto').value;
+
+            if (!dni || !nombre || !email || !reclamaTexto) {
+                alert('Por favor, complete todos los campos de la reclamación.');
+                return;
+            }
+
+            const now = new Date();
+            const dateTime = now.toLocaleString();
+
+            const contenido = `
+            Registro de Reclamación
+            =========================
+            DNI: ${dni}
+            Nombre: ${nombre}
+            Email: ${email}
+            Fecha y Hora: ${dateTime}
+            Reclamación: ${reclamaTexto}
+            `;
+
+            const blob = new Blob([contenido], { type: 'text/plain' });
+            const enlace = document.createElement('a');
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = 'reclama.txt';
+            enlace.click();
+        }
+    </script>
+
+</body>
+</html>
